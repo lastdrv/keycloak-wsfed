@@ -15,6 +15,22 @@ for its operations.
 
 This module is currently working on 8.0.1 (check tags for compatibility with previous Keycloak versions)
 
+Добавим в .m2/settings.xml
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
+<mirrors>
+<mirror>
+<id>maven-default-http-blocker</id>
+<mirrorOf>dummy</mirrorOf>
+<name>Dummy mirror to override default blocking mirror that blocks http</name>
+<url>http://0.0.0.0/</url>
+</mirror>
+</mirrors>
+</settings>
+
+
+
 ## How to build
 
 Before building this project with a basic `mvn clean install`, you need to first build cloudtrust-common.
@@ -68,7 +84,7 @@ install -d -v -m755 /opt/keycloak/modules/system/layers/wsfed -o keycloak -g key
 install -d -v -m755 /opt/keycloak/modules/system/layers/wsfed/com/quest/keycloak-wsfed/main/ -o keycloak -g keycloak
 
 #Install jar
-install -v -m0755 -o keycloak -g keycloak -D target/keycloak-wsfed-8.0.1.jar /opt/keycloak/modules/system/layers/wsfed/com/quest/keycloak-wsfed/main/
+install -v -m0755 -o keycloak -g keycloak -D target/keycloak-wsfed-18.0.0.jar /opt/keycloak/modules/system/layers/wsfed/com/quest/keycloak-wsfed/main/
 
 #Install module file
 install -v -m0755 -o keycloak -g keycloak -D module.xml /opt/keycloak/modules/system/layers/wsfed/com/quest/keycloak-wsfed/main/
